@@ -4,3 +4,5 @@ __pycache__/
 config.py
 parse_codex.py
 test.py
+dev.py
+/testing
