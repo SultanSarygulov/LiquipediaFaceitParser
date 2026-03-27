@@ -1,9 +1,9 @@
 import requests
 from datetime import datetime, timedelta, timezone
-from models import Map, Match, Team
+from models import Map, Team
 from config import get_faceit_api_key
 
-maps_names ={
+MAP_NAMES ={
     'de_mirage': 'Mirage',
     'de_train': 'Train',
     'de_overpass': 'Overpass',
@@ -14,27 +14,59 @@ maps_names ={
     'de_vertigo': 'Vertgio',
     'de_nuke': 'Nuke'
 }
-
+TIMEZONES = {
+    'ALMT': 5,
+    'AQTT': 5,
+    'UZT': 5,
+    'TJT': 5,
+    'KGT': 6,
+    'MSK': 3,
+    'CET': 1,
+    'CEST': 2
+}
 API_KEY = get_faceit_api_key()
 HEADERS = {'Authorization': f'Bearer {API_KEY}'}
 
 
-def format_match_datetime(timestamp, timezone_abbr) -> str:
+def format_match_datetime(timestamp: str, timezone_abbr) -> str:
 
-    tz = timezone(timedelta(hours=5))
+    '''Convert Unix timestamp into formatted string
+
+    Example:
+        format_match_datetime(1764508347, ALMT)
+        -> November 30, 2025 - 18:12 {{Abbr/ALMT}}
+    '''
+
+    tz = timezone(timedelta(hours=TIMEZONES[timezone_abbr]))
     dt = datetime.fromtimestamp(timestamp=timestamp, tz=tz)
     return f'{dt.strftime('%B')} {dt.day}, {dt.year} - {dt.strftime('%H:%M')} {{{{Abbr/{timezone_abbr}}}}}'
 
+def get_team_stats(map_stats: dict, faction_id: str) -> dict:
+    
+    for team in map_stats['teams']:
+        if team["team_id"] == faction_id:
+            return team
+    raise ValueError(f"Team stats not found for faction_id={faction_id}")
 
-def get_name(faction_id, headers):
-        team_json = requests.get(
-            f'https://open.faceit.com/data/v4/teams/{faction_id}',
-            headers=headers).json()
-        
-        return team_json["name"]
+def build_map(map_stats: str, voted_map: str, team1_sides: list, team1:str, team2) -> str:
+    
+    if map_stats is None:
+        return f"    |map3={{{{Map|map={voted_map}|finished=skip}}}}"
 
-def build_map(map: Map):
+    team1_stats = get_team_stats(map_stats=map_stats, faction_id=team1)['team_stats']
+    team2_stats = get_team_stats(map_stats=map_stats, faction_id=team2)['team_stats']
 
+    number=int(map_stats['played'])
+
+    map = Map(
+        id=map_stats['played'],
+        name=voted_map,
+        team1_side=team1_sides[number-1],
+        team1_first_half=team1_stats['First Half Score'],
+        team1_second_half=team1_stats['Second Half Score'],
+        team2_first_half=team2_stats['First Half Score'],
+        team2_second_half=team2_stats['Second Half Score']
+    )
 
     if map.team1_side == "t":
         t1_t    = map.team1_first_half
@@ -53,17 +85,8 @@ def build_map(map: Map):
         f"    |map{map.id}={{{{Map|map={map.name}|finished=true\n"
         f"        |t1firstside={map.team1_side}|t1t={t1_t}|t1ct={t1_ct}|t2t={t2_t}|t2ct={t2_ct}}}}}"
     )
-    
 
-def get_team_stats(map_stats: dict, faction_id: str) -> dict:
-
-    
-    for team in map_stats['teams']:
-        if team["team_id"] == faction_id:
-            return team
-    raise ValueError(f"Team stats not found for faction_id={faction_id}")
-
-def build_match(match_id, team1_sides):
+def build_match(match_id: str, team1_sides: list[str], switch_team=True) -> str:
 
     match_url = f'https://open.faceit.com/data/v4/matches/{match_id}'
     match_stats_url = f'https://open.faceit.com/data/v4/matches/{match_id}/stats'
@@ -71,7 +94,7 @@ def build_match(match_id, team1_sides):
     match_stats = requests.get(url=match_stats_url, headers=HEADERS).json()
 
     formatted_datetime = format_match_datetime(match_json["started_at"], 'ALMT')
-    
+
     team1 = Team(
         match_json["teams"]["faction1"]["faction_id"], 
         match_json["teams"]["faction1"]["name"]
@@ -80,34 +103,27 @@ def build_match(match_id, team1_sides):
         match_json["teams"]["faction2"]["faction_id"], 
         match_json["teams"]["faction2"]["name"]
     )
+    
+    if switch_team == True:
+        team1, team2 = team2, team1
 
     maps = []
-    voted_maps =[maps_names[voted_map] for voted_map in match_json["voting"]["map"]["pick"]]
 
+    voted_maps =[MAP_NAMES[voted_map] for voted_map in match_json["voting"]["map"]["pick"]]
     for i, voted_map in enumerate(voted_maps):
 
-        try:
-
-            map_stats = match_stats['rounds'][i]
-
-            team1_stats = get_team_stats(map_stats=map_stats, faction_id=team1.id)['team_stats']
-            team2_stats = get_team_stats(map_stats=map_stats, faction_id=team2.id)['team_stats']
-
-            map = Map(
-                id=map_stats['played'],
-                name=voted_map,
-                team1_side=team1_sides[i],
-                team1_first_half=team1_stats['First Half Score'],
-                team1_second_half=team1_stats['Second Half Score'],
-                team2_first_half=team2_stats['First Half Score'],
-                team2_second_half=team2_stats['Second Half Score']
+        map_stats = match_stats["rounds"][i] if i < len(match_stats["rounds"]) else None
+ 
+        maps.append(
+            build_map(
+                map_stats=map_stats, 
+                voted_map=voted_map,
+                team1_sides=team1_sides,
+                team1=team1.id,
+                team2=team2.id
             )
-
-            maps.append(build_map(map))
+        )
         
-        except:
-            maps.append(f"    |map{i+1}={{{{Map|map={voted_map}|finished=skip}}}}")
-    
     lines = [
         "{{Match",
         f"    |opponent1={{{{TeamOpponent|{team1.name.lower()}}}}}|opponent2={{{{TeamOpponent|{team2.name.lower()}}}}}",

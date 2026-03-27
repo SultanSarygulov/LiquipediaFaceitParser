@@ -4,16 +4,19 @@
 
 ### 1. Input FACEIT Match ID
 
-Provide a FACEIT match ID in the following format:
-
 ```
 match_id=1-68ce4542-876a-4862-92bc-a18407d6d970
 ```
 ---
 
-### 2. Generate Liquipedia Code
+### 2. Input Team 1 first sides (ct or t)
 
-The output is a fully formatted Liquipedia match template:
+```
+team1_first_sides=t ct t
+```
+---
+
+### 3. Generate Liquipedia Code
 
 ```
 {{Match
