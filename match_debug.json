@@ -1,0 +1,204 @@
+{
+  "match_id": "1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc",
+  "version": 2,
+  "game": "cs2",
+  "region": "EU",
+  "competition_id": "15f1471b-f1a4-40b9-aac0-b8aca8772a21",
+  "competition_type": "championship",
+  "competition_name": "1XBET SPRING BATTLE CUP - OPEN QUALIFICATION 2",
+  "organizer_id": "be53c991-5647-4e91-9889-9da3504e13c2",
+  "teams": {
+    "faction1": {
+      "faction_id": "fb9d2405-e986-444f-b615-cd1e3c90e45b",
+      "leader": "e2f85bc0-3b49-4271-86a7-e9dbf8571816",
+      "avatar": "https://distribution.faceit-cdn.net/images/8ed008ff-2e5e-4ee9-bce6-e59b739a9319.jpg",
+      "roster": [
+        {
+          "player_id": "e2f85bc0-3b49-4271-86a7-e9dbf8571816",
+          "nickname": "kamaz",
+          "avatar": "https://distribution.faceit-cdn.net/images/50153eab-8ca5-4650-a078-8f19970a357a.jpeg",
+          "membership": "super_match_token",
+          "game_player_id": "76561199128354969",
+          "game_player_name": "bob66",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "b55f2ffe-0df8-40e7-b086-d28d226e4e5f",
+          "nickname": "movalova66",
+          "avatar": "https://distribution.faceit-cdn.net/images/eb7894d5-6ca2-4973-8794-0a90b47ac5f4.jpg",
+          "membership": "premium",
+          "game_player_id": "76561198419393816",
+          "game_player_name": "Infinite Tsukuyomi",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "f44280b2-ebd6-4bd4-ab92-d86664c82052",
+          "nickname": "ARSPOWER",
+          "avatar": "https://distribution.faceit-cdn.net/images/1416cdce-a6af-49b6-af24-2d1c540905f2.jpeg",
+          "membership": "esea",
+          "game_player_id": "76561198196957497",
+          "game_player_name": "ARSPOWER",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "dab95f76-d56c-44da-ad3c-99ddaa7a31d0",
+          "nickname": "Di1ka",
+          "avatar": "https://distribution.faceit-cdn.net/images/f007d248-1c98-4640-8577-d3abf770bea4.jpeg",
+          "membership": "super_match_token",
+          "game_player_id": "76561199234178085",
+          "game_player_name": "Di1ka",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "9b964689-d813-4ff9-856b-db82c790136b",
+          "nickname": "nyx13-",
+          "avatar": "https://distribution.faceit-cdn.net/images/6d8e1c06-745c-4e1b-ab3a-74fafce07bc0.jpg",
+          "membership": "plus",
+          "game_player_id": "76561198146401958",
+          "game_player_name": "Mescadi",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        }
+      ],
+      "substitutes": [
+        {
+          "player_id": "a22a452d-c601-42ed-aa6b-ea70d14d23d1",
+          "nickname": "mcwsm",
+          "avatar": "https://distribution.faceit-cdn.net/images/f4c37b08-8fa2-49ff-b69f-95a24bb098d5.jpeg",
+          "membership": "free",
+          "game_player_id": "76561199044539364",
+          "game_player_name": "BCEMOGYLIJU",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        }
+      ],
+      "substituted": true,
+      "name": "Altay Esports",
+      "type": "premade"
+    },
+    "faction2": {
+      "faction_id": "834c298d-4447-4a8d-9f83-905adebc4fbe",
+      "leader": "c4cff4e2-d8b0-47b5-a50f-ac708b12deab",
+      "avatar": "https://distribution.faceit-cdn.net/images/142a14d1-81cc-49b4-bfd4-d2ca9d888886.jpg",
+      "roster": [
+        {
+          "player_id": "c4cff4e2-d8b0-47b5-a50f-ac708b12deab",
+          "nickname": "CONTEPOLA25",
+          "avatar": "https://distribution.faceit-cdn.net/images/8fae826c-1603-4ad2-bd2f-2c2d75b41ce2.jpg",
+          "membership": "premium",
+          "game_player_id": "76561198364714069",
+          "game_player_name": "OLDURUCU BONAPART",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "888098d7-ca11-498a-9d76-aa9bc8636708",
+          "nickname": "-Aldikon",
+          "avatar": "https://distribution.faceit-cdn.net/images/83186b8d-a7eb-4957-a173-20a6339a6502.jpeg",
+          "membership": "free",
+          "game_player_id": "76561198840570150",
+          "game_player_name": "Aldikon",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "9c2bcad4-a0d7-4aa1-a7ca-9fec6a997e10",
+          "nickname": "mincle-",
+          "avatar": "https://distribution.faceit-cdn.net/images/96cdf082-2751-47de-8e0b-78784f6e9a7e.jpg",
+          "membership": "plus",
+          "game_player_id": "76561198968061125",
+          "game_player_name": "galaxy collapse enjoyer",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "a4c4fb77-1996-47bd-b5e1-c14d86cf9997",
+          "nickname": "444rainy",
+          "avatar": "https://assets.faceit-cdn.net/avatars/a4c4fb77-1996-47bd-b5e1-c14d86cf9997_1621720550133.jpg",
+          "membership": "plus",
+          "game_player_id": "76561198334550344",
+          "game_player_name": "-rainy",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        },
+        {
+          "player_id": "55f54e98-2e3d-4486-a400-288a7eb7353b",
+          "nickname": "Arima",
+          "avatar": "https://distribution.faceit-cdn.net/images/d94ab055-d8a9-43e6-b643-28fa132761ff.jpg",
+          "membership": "premium",
+          "game_player_id": "76561199101320044",
+          "game_player_name": "drinking coke",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        }
+      ],
+      "substitutes": [
+        {
+          "player_id": "92f0dfb7-90c7-47b5-8af0-2d65072ba5b6",
+          "nickname": "areokk",
+          "avatar": "https://distribution.faceit-cdn.net/images/4199bb28-5d40-4415-9406-4e9fcee447a2.jpg",
+          "membership": "free",
+          "game_player_id": "76561199070566399",
+          "game_player_name": "invincible",
+          "game_skill_level": 10,
+          "anticheat_required": true
+        }
+      ],
+      "substituted": true,
+      "name": "WINNERS 1XBET",
+      "type": "premade"
+    }
+  },
+  "calculate_elo": false,
+  "configured_at": 1775153867,
+  "started_at": 1775153995,
+  "finished_at": 1775157620,
+  "demo_url": [
+    "https://demos-europe-central.backblaze.faceit-cdn.net/cs2/1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc-1-2.dem.zst"
+  ],
+  "chat_room_id": "match-1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc",
+  "best_of": 1,
+  "results": {
+    "winner": "faction1",
+    "score": {
+      "faction2": 11,
+      "faction1": 13
+    }
+  },
+  "detailed_results": [
+    {
+      "asc_score": false,
+      "winner": "faction1",
+      "factions": {
+        "faction1": {
+          "score": 13
+        },
+        "faction2": {
+          "score": 11
+        }
+      }
+    }
+  ],
+  "status": "FINISHED",
+  "round": 4,
+  "group": 1,
+  "faceit_url": "https://www.faceit.com/{lang}/cs2/room/1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc",
+  "instances": [
+    {
+      "id": "1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc-1-1",
+      "round": 1,
+      "demos": []
+    },
+    {
+      "id": "1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc-1-2",
+      "round": 1,
+      "demos": [
+        "https://demos-europe-central.backblaze.faceit-cdn.net/cs2/1-d345c0dd-7df3-4213-b4d7-1f1334b78cfc-1-2.dem.zst"
+      ]
+    }
+  ]
+}
